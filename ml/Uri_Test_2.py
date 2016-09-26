@@ -2,7 +2,8 @@ from os import listdir
 from os.path import isfile, join
 import numpy as np
 import datetime
-from numpy.matlib import empty, random, argsort
+from numpy.matlib import empty, random, argsort, sort
+from boost_lib import dixon3
 __author__ = 'uri lipowezkie'
 
 
@@ -133,7 +134,7 @@ for item in only_files:
     nz = nz[0]
     n_zeros = n_offers - len(nz)
     print "Distance: Number = ", len(uni_dist), ", Minimun = ", min(dist), ", Maximum = ", max(dist), ", Number of zeros = ", n_zeros
-    # print uni_dist
+    dixon3(dist, "Dist")
     uri_ride = set(ride_type)
     print "Ride Type: Number = ", len(uri_ride), ", Minimun = ", min(ride_type), ", Maximum = ", max(ride_type)
     uni_class = set(class_type)

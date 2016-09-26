@@ -5,7 +5,10 @@ from numpy.matlib import sort
 
 
 def dixon3(t_var, name):
-    ts_var = sort(t_var)
+    uni_var = set(t_var)
+    uri_var = list(uni_var)
+    ts_var = sort(uni_var)
+    print ts_var
     q_min = ts_var[2] - ts_var[0]
     t_int = ts_var[-3] - ts_var[0]
     qd_1 = q_min/t_int
@@ -13,8 +16,11 @@ def dixon3(t_var, name):
     t_int = ts_var[-1] - ts_var[2]
     qd_2 = q_max / t_int
     q_quant = 0.253
+    print ts_var[0], qd_1, ts_var[-1], qd_2
     if qd_1 > q_quant:
-        print name, " has suspected minimual value = ", 
+        print name, " has suspected minimual value = ", ts_var[0], " qDixon = ", qd_1
+    if qd_2 > q_quant:
+        print name, " has suspected maximal value = ", ts_var[-1], " qDixon = ", qd_2
 # function Qd = gDixon3(Tvar)
 # % outlier q-test r22
 #  Tsort = sort(Tvar);
